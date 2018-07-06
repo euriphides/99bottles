@@ -1,4 +1,8 @@
 class Bottles
+  def container
+
+  end
+
   def verse(number)
     case number
     when 0
