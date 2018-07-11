@@ -1,4 +1,19 @@
 class Bottles
+  def song
+    verses(99, 0)
+    end
+
+  def verses(starting, ending)
+    starting.downto(ending).collect { |i| verse(i) }.join("\n")
+  end
+
+  def verse(number)
+    "#{quantity(number).capitalize} #{container(number)} of beer on the wall, " \
+    "#{quantity(number)} #{container(number)} of beer.\n" \
+    "#{action(number)}, " \
+    "#{quantity(successor(number))} #{container(successor(number))} of beer on the wall.\n"
+  end
+
   def container(number)
     if number == 1
       "bottle"
@@ -39,18 +54,4 @@ class Bottles
     end
   end
 
-  def verse(number)
-    "#{quantity(number).capitalize} #{container(number)} of beer on the wall, " \
-    "#{quantity(number)} #{container(number)} of beer.\n" \
-    "#{action(number)}, " \
-    "#{quantity(successor(number))} #{container(successor(number))} of beer on the wall.\n"
-  end
-
-  def verses(starting, ending)
-    starting.downto(ending).collect { |i| verse(i) }.join("\n")
-  end
-
-  def song
-    verses(99, 0)
-  end
 end
