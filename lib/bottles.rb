@@ -72,15 +72,24 @@ class BottleNumber
   end
 
   def self.for(number)
-    case number
-    when 0
-      BottleNumber0
-    when 1
-      BottleNumber1
-    else
+  #   case number
+  #   when 0
+  #     BottleNumber0
+  #   when 1
+  #     BottleNumber1
+  #   when 6
+  #     BottleNumber6
+  #   else
+  #     BottleNumber
+  #   end.new(number)
+
+    begin
+      const_get("BottleNumber#{number}")
+    rescue NameError #this is the "ooops I couldn't find this bottle number" fallback. The else, as it were.
       BottleNumber
     end.new(number)
-  end
+   end
+
 
 end
 
@@ -108,4 +117,14 @@ class BottleNumber1 < BottleNumber
     "it"
   end
 
+end
+
+class BottleNumber6 < BottleNumber
+  def container
+    "six-pack"
+  end
+
+  def quantity
+    "1"
+  end
 end
